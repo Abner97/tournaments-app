@@ -6,12 +6,65 @@ adding a new "isDone" field as a boolean. The authorization rule below
 specifies that any user authenticated via an API key can "create", "read",
 "update", and "delete" any "Todo" records.
 =========================================================================*/
+
 const schema = a.schema({
-  Todo: a
-    .model({
-      content: a.string(),
-    })
-    .authorization((allow) => [allow.publicApiKey()]),
+  Category: a.model({
+    categoryId: a.id().required(),
+    alias: a.string().required(),
+    description: a.string().required(),
+    tournament: a.hasMany("Tournament", "categoryId"),
+  }).authorization((allow) => [allow.publicApiKey()]),
+  
+  Tournament: a.model({
+    tournamentId: a.id().required(),
+    name: a.string().required(),
+    categoryId: a.id().required(),
+    userId: a.id().required(),
+    category: a.belongsTo("Category", "categoryId"),
+    user: a.belongsTo("User", "userId"),
+    tickets: a.hasMany("Ticket", "tournamentId")
+  }).authorization((allow) => [allow.publicApiKey()]),
+
+  Ticket: a.model({
+    ticketId: a.id().required(),
+    status: a.string().required(),
+    createdAt: a.datetime().required(),
+    tournamentId: a.id().required(),
+    userId: a.id().required(),
+    tournament: a.belongsTo("Tournament", "tournamentId"),
+    qrcode: a.hasOne("Qrcode", "ticketId"),
+    user: a.belongsTo("User", "userId")
+  }).authorization((allow) => [allow.publicApiKey()]),
+
+  Qrcode: a.model({
+    qrCodeId: a.id().required(),
+    ticketId: a.id().required(),
+    ticket: a.belongsTo("Ticket", "ticketId"),
+    url: a.string().required()
+  }).authorization((allow) => [allow.publicApiKey()]),
+
+  User: a.model({
+    userId: a.id().required(),
+    name: a.string().required(),
+    email: a.string().required(),
+    tierId: a.id().required(),
+    tier: a.belongsTo("Tier", "tierId"),
+    tickets: a.hasMany("Ticket","userId"),
+    tournaments: a.hasMany("Tournament", "userId"),
+  }).authorization((allow) => [allow.publicApiKey()]),
+
+
+  Tier: a.model({
+    tierId: a.id().required(),
+    user: a.hasMany("User", "tierId"),
+    alias: a.string().required(),
+    value: a.float().required(),
+    description: a.string().required()
+  }).authorization((allow) => [allow.publicApiKey()]),
+
+
+
+
 });
 
 export type Schema = ClientSchema<typeof schema>;
