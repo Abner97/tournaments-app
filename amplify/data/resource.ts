@@ -47,7 +47,7 @@ const schema = a.schema({
     userId: a.id().required(),
     name: a.string().required(),
     email: a.string().required(),
-    tierId: a.id().required(),
+    tierId: a.id(),
     tier: a.belongsTo("Tier", "tierId"),
     tickets: a.hasMany("Ticket","userId"),
     tournaments: a.hasMany("Tournament", "userId"),
