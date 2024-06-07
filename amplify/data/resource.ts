@@ -58,7 +58,7 @@ const schema = a
         profileOwner: a.string(),
         email: a.string().required(),
         tierId: a.id(),
-        tier: a.string(),
+        tier: a.belongsTo('Tier', 'tierId'),
         tickets: a.hasMany('Ticket', 'userId'),
         tournaments: a.hasMany('Tournament', 'userId'),
       })
@@ -70,8 +70,9 @@ const schema = a
     Tier: a
       .model({
         id: a.id(),
+        users: a.hasMany('User', 'tierId'),
         alias: a.string(),
-        value: a.float(),
+        value: a.float().default(0),
         tournamentsLimit: a.integer(),
         description: a.string(),
         createdAt: a.datetime(),
