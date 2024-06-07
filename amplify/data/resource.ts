@@ -70,10 +70,12 @@ const schema = a
     Tier: a
       .model({
         users: a.hasMany('User', 'tierId'),
-        alias: a.string().required(),
-        value: a.float().required(),
+        alias: a.string(),
+        value: a.float(),
         tournamentsLimit: a.integer(),
-        description: a.string().required(),
+        description: a.string(),
+        createdAt: a.datetime(),
+        updatedAt: a.datetime(),
       })
       .authorization((allow) => [allow.publicApiKey()]),
   })
