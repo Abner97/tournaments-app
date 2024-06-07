@@ -39,18 +39,20 @@ const client = generateClient<Schema>({
 });
 
 export const handler: PostConfirmationTriggerHandler = async (event) => {
-  await client.graphql({
-    query: createUser,
-    variables: {
-      input: {
-        id: event.request.userAttributes.sub,
-        email: event.request.userAttributes.email,
-        profileOwner: `${event.request.userAttributes.sub}::${event.userName}`,
-        name: event.request.userAttributes.name,
-        tierId: 'free',
+  await client
+    .graphql({
+      query: createUser,
+      variables: {
+        input: {
+          id: event.request.userAttributes.sub,
+          email: event.request.userAttributes.email,
+          profileOwner: `${event.request.userAttributes.sub}::${event.userName}`,
+          name: event.request.userAttributes.name,
+          tierId: 'free',
+        },
       },
-    },
-  });
+    })
+    .catch((error) => console.error(error));
 
   return event;
 };
