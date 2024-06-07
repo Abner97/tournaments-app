@@ -69,6 +69,7 @@ const schema = a
 
     Tier: a
       .model({
+        id: a.id(),
         users: a.hasMany('User', 'tierId'),
         alias: a.string(),
         value: a.float(),
