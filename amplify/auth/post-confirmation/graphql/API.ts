@@ -79,14 +79,14 @@ export type User = {
 
 export type Tier = {
   __typename: "Tier",
-  alias: string,
-  createdAt: string,
-  description: string,
+  alias?: string | null,
+  createdAt?: string | null,
+  description?: string | null,
   id: string,
   tournamentsLimit?: number | null,
-  updatedAt: string,
+  updatedAt?: string | null,
   users?: ModelUserConnection | null,
-  value: number,
+  value?: number | null,
 };
 
 export type ModelUserConnection = {
@@ -334,11 +334,13 @@ export type ModelTierConditionInput = {
 };
 
 export type CreateTierInput = {
-  alias: string,
-  description: string,
+  alias?: string | null,
+  createdAt?: string | null,
+  description?: string | null,
   id?: string | null,
   tournamentsLimit?: number | null,
-  value: number,
+  updatedAt?: string | null,
+  value?: number | null,
 };
 
 export type ModelTournamentConditionInput = {
@@ -430,9 +432,11 @@ export type UpdateTicketInput = {
 
 export type UpdateTierInput = {
   alias?: string | null,
+  createdAt?: string | null,
   description?: string | null,
   id: string,
   tournamentsLimit?: number | null,
+  updatedAt?: string | null,
   value?: number | null,
 };
 
@@ -673,17 +677,17 @@ export type GetTierQueryVariables = {
 export type GetTierQuery = {
   getTier?:  {
     __typename: "Tier",
-    alias: string,
-    createdAt: string,
-    description: string,
+    alias?: string | null,
+    createdAt?: string | null,
+    description?: string | null,
     id: string,
     tournamentsLimit?: number | null,
-    updatedAt: string,
+    updatedAt?: string | null,
     users?:  {
       __typename: "ModelUserConnection",
       nextToken?: string | null,
     } | null,
-    value: number,
+    value?: number | null,
   } | null,
 };
 
@@ -745,13 +749,13 @@ export type GetUserQuery = {
     } | null,
     tier?:  {
       __typename: "Tier",
-      alias: string,
-      createdAt: string,
-      description: string,
+      alias?: string | null,
+      createdAt?: string | null,
+      description?: string | null,
       id: string,
       tournamentsLimit?: number | null,
-      updatedAt: string,
-      value: number,
+      updatedAt?: string | null,
+      value?: number | null,
     } | null,
     tierId?: string | null,
     tournaments?:  {
@@ -838,13 +842,13 @@ export type ListTiersQuery = {
     __typename: "ModelTierConnection",
     items:  Array< {
       __typename: "Tier",
-      alias: string,
-      createdAt: string,
-      description: string,
+      alias?: string | null,
+      createdAt?: string | null,
+      description?: string | null,
       id: string,
       tournamentsLimit?: number | null,
-      updatedAt: string,
-      value: number,
+      updatedAt?: string | null,
+      value?: number | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -998,17 +1002,17 @@ export type CreateTierMutationVariables = {
 export type CreateTierMutation = {
   createTier?:  {
     __typename: "Tier",
-    alias: string,
-    createdAt: string,
-    description: string,
+    alias?: string | null,
+    createdAt?: string | null,
+    description?: string | null,
     id: string,
     tournamentsLimit?: number | null,
-    updatedAt: string,
+    updatedAt?: string | null,
     users?:  {
       __typename: "ModelUserConnection",
       nextToken?: string | null,
     } | null,
-    value: number,
+    value?: number | null,
   } | null,
 };
 
@@ -1072,13 +1076,13 @@ export type CreateUserMutation = {
     } | null,
     tier?:  {
       __typename: "Tier",
-      alias: string,
-      createdAt: string,
-      description: string,
+      alias?: string | null,
+      createdAt?: string | null,
+      description?: string | null,
       id: string,
       tournamentsLimit?: number | null,
-      updatedAt: string,
-      value: number,
+      updatedAt?: string | null,
+      value?: number | null,
     } | null,
     tierId?: string | null,
     tournaments?:  {
@@ -1190,17 +1194,17 @@ export type DeleteTierMutationVariables = {
 export type DeleteTierMutation = {
   deleteTier?:  {
     __typename: "Tier",
-    alias: string,
-    createdAt: string,
-    description: string,
+    alias?: string | null,
+    createdAt?: string | null,
+    description?: string | null,
     id: string,
     tournamentsLimit?: number | null,
-    updatedAt: string,
+    updatedAt?: string | null,
     users?:  {
       __typename: "ModelUserConnection",
       nextToken?: string | null,
     } | null,
-    value: number,
+    value?: number | null,
   } | null,
 };
 
@@ -1264,13 +1268,13 @@ export type DeleteUserMutation = {
     } | null,
     tier?:  {
       __typename: "Tier",
-      alias: string,
-      createdAt: string,
-      description: string,
+      alias?: string | null,
+      createdAt?: string | null,
+      description?: string | null,
       id: string,
       tournamentsLimit?: number | null,
-      updatedAt: string,
-      value: number,
+      updatedAt?: string | null,
+      value?: number | null,
     } | null,
     tierId?: string | null,
     tournaments?:  {
@@ -1382,17 +1386,17 @@ export type UpdateTierMutationVariables = {
 export type UpdateTierMutation = {
   updateTier?:  {
     __typename: "Tier",
-    alias: string,
-    createdAt: string,
-    description: string,
+    alias?: string | null,
+    createdAt?: string | null,
+    description?: string | null,
     id: string,
     tournamentsLimit?: number | null,
-    updatedAt: string,
+    updatedAt?: string | null,
     users?:  {
       __typename: "ModelUserConnection",
       nextToken?: string | null,
     } | null,
-    value: number,
+    value?: number | null,
   } | null,
 };
 
@@ -1456,13 +1460,13 @@ export type UpdateUserMutation = {
     } | null,
     tier?:  {
       __typename: "Tier",
-      alias: string,
-      createdAt: string,
-      description: string,
+      alias?: string | null,
+      createdAt?: string | null,
+      description?: string | null,
       id: string,
       tournamentsLimit?: number | null,
-      updatedAt: string,
-      value: number,
+      updatedAt?: string | null,
+      value?: number | null,
     } | null,
     tierId?: string | null,
     tournaments?:  {
@@ -1570,17 +1574,17 @@ export type OnCreateTierSubscriptionVariables = {
 export type OnCreateTierSubscription = {
   onCreateTier?:  {
     __typename: "Tier",
-    alias: string,
-    createdAt: string,
-    description: string,
+    alias?: string | null,
+    createdAt?: string | null,
+    description?: string | null,
     id: string,
     tournamentsLimit?: number | null,
-    updatedAt: string,
+    updatedAt?: string | null,
     users?:  {
       __typename: "ModelUserConnection",
       nextToken?: string | null,
     } | null,
-    value: number,
+    value?: number | null,
   } | null,
 };
 
@@ -1643,13 +1647,13 @@ export type OnCreateUserSubscription = {
     } | null,
     tier?:  {
       __typename: "Tier",
-      alias: string,
-      createdAt: string,
-      description: string,
+      alias?: string | null,
+      createdAt?: string | null,
+      description?: string | null,
       id: string,
       tournamentsLimit?: number | null,
-      updatedAt: string,
-      value: number,
+      updatedAt?: string | null,
+      value?: number | null,
     } | null,
     tierId?: string | null,
     tournaments?:  {
@@ -1757,17 +1761,17 @@ export type OnDeleteTierSubscriptionVariables = {
 export type OnDeleteTierSubscription = {
   onDeleteTier?:  {
     __typename: "Tier",
-    alias: string,
-    createdAt: string,
-    description: string,
+    alias?: string | null,
+    createdAt?: string | null,
+    description?: string | null,
     id: string,
     tournamentsLimit?: number | null,
-    updatedAt: string,
+    updatedAt?: string | null,
     users?:  {
       __typename: "ModelUserConnection",
       nextToken?: string | null,
     } | null,
-    value: number,
+    value?: number | null,
   } | null,
 };
 
@@ -1830,13 +1834,13 @@ export type OnDeleteUserSubscription = {
     } | null,
     tier?:  {
       __typename: "Tier",
-      alias: string,
-      createdAt: string,
-      description: string,
+      alias?: string | null,
+      createdAt?: string | null,
+      description?: string | null,
       id: string,
       tournamentsLimit?: number | null,
-      updatedAt: string,
-      value: number,
+      updatedAt?: string | null,
+      value?: number | null,
     } | null,
     tierId?: string | null,
     tournaments?:  {
@@ -1944,17 +1948,17 @@ export type OnUpdateTierSubscriptionVariables = {
 export type OnUpdateTierSubscription = {
   onUpdateTier?:  {
     __typename: "Tier",
-    alias: string,
-    createdAt: string,
-    description: string,
+    alias?: string | null,
+    createdAt?: string | null,
+    description?: string | null,
     id: string,
     tournamentsLimit?: number | null,
-    updatedAt: string,
+    updatedAt?: string | null,
     users?:  {
       __typename: "ModelUserConnection",
       nextToken?: string | null,
     } | null,
-    value: number,
+    value?: number | null,
   } | null,
 };
 
@@ -2017,13 +2021,13 @@ export type OnUpdateUserSubscription = {
     } | null,
     tier?:  {
       __typename: "Tier",
-      alias: string,
-      createdAt: string,
-      description: string,
+      alias?: string | null,
+      createdAt?: string | null,
+      description?: string | null,
       id: string,
       tournamentsLimit?: number | null,
-      updatedAt: string,
-      value: number,
+      updatedAt?: string | null,
+      value?: number | null,
     } | null,
     tierId?: string | null,
     tournaments?:  {
