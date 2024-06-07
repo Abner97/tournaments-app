@@ -1,0 +1,1983 @@
+{
+ "Parameters": {
+  "DynamoDBModelTableReadIOPS": {
+   "Type": "Number",
+   "Default": 5,
+   "Description": "The number of read IOPS the table should support."
+  },
+  "DynamoDBModelTableWriteIOPS": {
+   "Type": "Number",
+   "Default": 5,
+   "Description": "The number of write IOPS the table should support."
+  },
+  "DynamoDBBillingMode": {
+   "Type": "String",
+   "Default": "PAY_PER_REQUEST",
+   "AllowedValues": [
+    "PAY_PER_REQUEST",
+    "PROVISIONED"
+   ],
+   "Description": "Configure @model types to create DynamoDB tables with PAY_PER_REQUEST or PROVISIONED billing modes."
+  },
+  "DynamoDBEnablePointInTimeRecovery": {
+   "Type": "String",
+   "Default": "false",
+   "AllowedValues": [
+    "true",
+    "false"
+   ],
+   "Description": "Whether to enable Point in Time Recovery on the table."
+  },
+  "DynamoDBEnableServerSideEncryption": {
+   "Type": "String",
+   "Default": "true",
+   "AllowedValues": [
+    "true",
+    "false"
+   ],
+   "Description": "Enable server side encryption powered by KMS."
+  },
+  "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource3EC945C6Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataAmplifyTableManagerTableMa3DF1075C": {
+   "Type": "String"
+  },
+  "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId": {
+   "Type": "String"
+  },
+  "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name": {
+   "Type": "String"
+  },
+  "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthauthenticatedUserRoleF51E1C27Ref": {
+   "Type": "String"
+  },
+  "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthunauthenticatedUserRole596BD464Ref": {
+   "Type": "String"
+  },
+  "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthIdentityPool44C560DBRef": {
+   "Type": "String"
+  }
+ },
+ "Conditions": {
+  "HasEnvironmentParameter": {
+   "Fn::Not": [
+    {
+     "Fn::Equals": [
+      "NONE",
+      "NONE"
+     ]
+    }
+   ]
+  },
+  "ShouldUseServerSideEncryption": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBEnableServerSideEncryption"
+    },
+    "true"
+   ]
+  },
+  "ShouldUsePayPerRequestBilling": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBBillingMode"
+    },
+    "PAY_PER_REQUEST"
+   ]
+  },
+  "ShouldUsePointInTimeRecovery": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBEnablePointInTimeRecovery"
+    },
+    "true"
+   ]
+  },
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-2"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "Resources": {
+  "TournamentTable": {
+   "Type": "Custom::AmplifyDynamoDBTable",
+   "Properties": {
+    "ServiceToken": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource3EC945C6Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataAmplifyTableManagerTableMa3DF1075C"
+    },
+    "tableName": {
+     "Fn::Join": [
+      "",
+      [
+       "Tournament-",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "-NONE"
+      ]
+     ]
+    },
+    "attributeDefinitions": [
+     {
+      "attributeName": "id",
+      "attributeType": "S"
+     },
+     {
+      "attributeName": "categoryId",
+      "attributeType": "S"
+     },
+     {
+      "attributeName": "userId",
+      "attributeType": "S"
+     }
+    ],
+    "keySchema": [
+     {
+      "attributeName": "id",
+      "keyType": "HASH"
+     }
+    ],
+    "globalSecondaryIndexes": [
+     {
+      "indexName": "gsi-Category.tournament",
+      "keySchema": [
+       {
+        "attributeName": "categoryId",
+        "keyType": "HASH"
+       }
+      ],
+      "projection": {
+       "projectionType": "ALL"
+      },
+      "provisionedThroughput": {
+       "Fn::If": [
+        "ShouldUsePayPerRequestBilling",
+        {
+         "Ref": "AWS::NoValue"
+        },
+        {
+         "ReadCapacityUnits": {
+          "Ref": "DynamoDBModelTableReadIOPS"
+         },
+         "WriteCapacityUnits": {
+          "Ref": "DynamoDBModelTableWriteIOPS"
+         }
+        }
+       ]
+      }
+     },
+     {
+      "indexName": "gsi-User.tournaments",
+      "keySchema": [
+       {
+        "attributeName": "userId",
+        "keyType": "HASH"
+       }
+      ],
+      "projection": {
+       "projectionType": "ALL"
+      },
+      "provisionedThroughput": {
+       "Fn::If": [
+        "ShouldUsePayPerRequestBilling",
+        {
+         "Ref": "AWS::NoValue"
+        },
+        {
+         "ReadCapacityUnits": {
+          "Ref": "DynamoDBModelTableReadIOPS"
+         },
+         "WriteCapacityUnits": {
+          "Ref": "DynamoDBModelTableWriteIOPS"
+         }
+        }
+       ]
+      }
+     }
+    ],
+    "provisionedThroughput": {
+     "Fn::If": [
+      "ShouldUsePayPerRequestBilling",
+      {
+       "Ref": "AWS::NoValue"
+      },
+      {
+       "ReadCapacityUnits": {
+        "Ref": "DynamoDBModelTableReadIOPS"
+       },
+       "WriteCapacityUnits": {
+        "Ref": "DynamoDBModelTableWriteIOPS"
+       }
+      }
+     ]
+    },
+    "sseSpecification": {
+     "sseEnabled": {
+      "Fn::If": [
+       "ShouldUseServerSideEncryption",
+       true,
+       false
+      ]
+     }
+    },
+    "streamSpecification": {
+     "streamViewType": "NEW_AND_OLD_IMAGES"
+    },
+    "allowDestructiveGraphqlSchemaUpdates": true,
+    "replaceTableUponGsiUpdate": true,
+    "pointInTimeRecoverySpecification": {
+     "Fn::If": [
+      "ShouldUsePointInTimeRecovery",
+      {
+       "PointInTimeRecoveryEnabled": true
+      },
+      {
+       "Ref": "AWS::NoValue"
+      }
+     ]
+    },
+    "billingMode": {
+     "Fn::If": [
+      "ShouldUsePayPerRequestBilling",
+      "PAY_PER_REQUEST",
+      {
+       "Ref": "AWS::NoValue"
+      }
+     ]
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/TournamentTable/Default/Default"
+   }
+  },
+  "TournamentIAMRoleA04F6A33": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "appsync.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Policies": [
+     {
+      "PolicyDocument": {
+       "Statement": [
+        {
+         "Action": [
+          "dynamodb:BatchGetItem",
+          "dynamodb:BatchWriteItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem",
+          "dynamodb:GetItem",
+          "dynamodb:Scan",
+          "dynamodb:Query",
+          "dynamodb:UpdateItem",
+          "dynamodb:ConditionCheckItem",
+          "dynamodb:DescribeTable",
+          "dynamodb:GetRecords",
+          "dynamodb:GetShardIterator"
+         ],
+         "Effect": "Allow",
+         "Resource": [
+          {
+           "Fn::Sub": [
+            "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}",
+            {
+             "tablename": {
+              "Fn::Join": [
+               "",
+               [
+                "Tournament-",
+                {
+                 "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+                },
+                "-NONE"
+               ]
+              ]
+             }
+            }
+           ]
+          },
+          {
+           "Fn::Sub": [
+            "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}/*",
+            {
+             "tablename": {
+              "Fn::Join": [
+               "",
+               [
+                "Tournament-",
+                {
+                 "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+                },
+                "-NONE"
+               ]
+              ]
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ],
+       "Version": "2012-10-17"
+      },
+      "PolicyName": "DynamoDBAccess"
+     }
+    ],
+    "RoleName": {
+     "Fn::Join": [
+      "",
+      [
+       "TournamentIAMRole32ff28-",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "-NONE"
+      ]
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyData"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/TournamentIAMRole/Resource"
+   }
+  },
+  "TournamentDataSource": {
+   "Type": "AWS::AppSync::DataSource",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DynamoDBConfig": {
+     "AwsRegion": {
+      "Ref": "AWS::Region"
+     },
+     "TableName": {
+      "Fn::Select": [
+       1,
+       {
+        "Fn::Split": [
+         "/",
+         {
+          "Fn::Select": [
+           5,
+           {
+            "Fn::Split": [
+             ":",
+             {
+              "Fn::GetAtt": [
+               "TournamentTable",
+               "TableArn"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "Name": "TournamentTable",
+    "ServiceRoleArn": {
+     "Fn::GetAtt": [
+      "TournamentIAMRoleA04F6A33",
+      "Arn"
+     ]
+    },
+    "Type": "AMAZON_DYNAMODB"
+   },
+   "DependsOn": [
+    "TournamentIAMRoleA04F6A33"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/TournamentDataSource/Resource"
+   }
+  },
+  "QuerygetTournamentauth0FunctionQuerygetTournamentauth0FunctionAppSyncFunction9629F7EC": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerygetTournamentauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0224a3e5097427da3f4460b5d6d2b86ad4195c9cb8da7bc13e7187eead1c3ae3.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/QuerygetTournamentauth0Function/QuerygetTournamentauth0Function.AppSyncFunction"
+   }
+  },
+  "QuerygetTournamentpostAuth0FunctionQuerygetTournamentpostAuth0FunctionAppSyncFunction122DF4AE": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerygetTournamentpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/QuerygetTournamentpostAuth0Function/QuerygetTournamentpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "QueryGetTournamentDataResolverFnQueryGetTournamentDataResolverFnAppSyncFunctionAEEAAC14": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "TournamentDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QueryGetTournamentDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/08f4d557693d96c1a4efba0f9dc91330e4b19772fd5477c156468843e3d9cb5e.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4c6a2d29f01c6091bd1d9afe16e5849d456c96f17c3b215938c8067399532719.vtl"
+    }
+   },
+   "DependsOn": [
+    "TournamentDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/QueryGetTournamentDataResolverFn/QueryGetTournamentDataResolverFn.AppSyncFunction"
+   }
+  },
+  "GetTournamentResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "FieldName": "getTournament",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "QuerygetTournamentauth0FunctionQuerygetTournamentauth0FunctionAppSyncFunction9629F7EC",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QuerygetTournamentpostAuth0FunctionQuerygetTournamentpostAuth0FunctionAppSyncFunction122DF4AE",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QueryGetTournamentDataResolverFnQueryGetTournamentDataResolverFnAppSyncFunctionAEEAAC14",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"getTournament\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "TournamentTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthauthenticatedUserRoleF51E1C27Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthunauthenticatedUserRole596BD464Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthIdentityPool44C560DBRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Query"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/queryGetTournamentResolver"
+   }
+  },
+  "QuerylistTournamentsauth0FunctionQuerylistTournamentsauth0FunctionAppSyncFunctionDDE05F59": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerylistTournamentsauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0224a3e5097427da3f4460b5d6d2b86ad4195c9cb8da7bc13e7187eead1c3ae3.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/QuerylistTournamentsauth0Function/QuerylistTournamentsauth0Function.AppSyncFunction"
+   }
+  },
+  "QuerylistTournamentspostAuth0FunctionQuerylistTournamentspostAuth0FunctionAppSyncFunction31AA78DE": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerylistTournamentspostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/QuerylistTournamentspostAuth0Function/QuerylistTournamentspostAuth0Function.AppSyncFunction"
+   }
+  },
+  "QueryListTournamentsDataResolverFnQueryListTournamentsDataResolverFnAppSyncFunction4748D061": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "TournamentDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QueryListTournamentsDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/3665466abf40cc747bff935f1cf2f49edd920e2cd12d45d502d3857488b3ff3e.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/cc01911d0269d4080ea57505dc445dfc315ef7ad85d3d9d4ea1357858bff451d.vtl"
+    }
+   },
+   "DependsOn": [
+    "TournamentDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/QueryListTournamentsDataResolverFn/QueryListTournamentsDataResolverFn.AppSyncFunction"
+   }
+  },
+  "ListTournamentResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "FieldName": "listTournaments",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "QuerylistTournamentsauth0FunctionQuerylistTournamentsauth0FunctionAppSyncFunctionDDE05F59",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QuerylistTournamentspostAuth0FunctionQuerylistTournamentspostAuth0FunctionAppSyncFunction31AA78DE",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QueryListTournamentsDataResolverFnQueryListTournamentsDataResolverFnAppSyncFunction4748D061",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"listTournaments\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "TournamentTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthauthenticatedUserRoleF51E1C27Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthunauthenticatedUserRole596BD464Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthIdentityPool44C560DBRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Query"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/queryListTournamentsResolver"
+   }
+  },
+  "MutationcreateTournamentinit0FunctionMutationcreateTournamentinit0FunctionAppSyncFunctionD4E9555B": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateTournamentinit0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a183ddccbd956316c38ef97177b8f088ef0826f62023323f5ae6053d348ccffc.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/MutationcreateTournamentinit0Function/MutationcreateTournamentinit0Function.AppSyncFunction"
+   }
+  },
+  "MutationcreateTournamentauth0FunctionMutationcreateTournamentauth0FunctionAppSyncFunction0D4ED0B1": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateTournamentauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d637c1fb7301003b8a5ada269338cf2e8df6cc0dc412ef13acc6158d680b6d3e.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/MutationcreateTournamentauth0Function/MutationcreateTournamentauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationcreateTournamentpostAuth0FunctionMutationcreateTournamentpostAuth0FunctionAppSyncFunctionB26345D2": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateTournamentpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/MutationcreateTournamentpostAuth0Function/MutationcreateTournamentpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationCreateTournamentDataResolverFnMutationCreateTournamentDataResolverFnAppSyncFunction30AF9817": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "TournamentDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationCreateTournamentDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/2b7470462964a1d0b680be61b3ca265e030c2830f590b81d4d811b59a0e6f1ac.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "TournamentDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/MutationCreateTournamentDataResolverFn/MutationCreateTournamentDataResolverFn.AppSyncFunction"
+   }
+  },
+  "CreateTournamentResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "FieldName": "createTournament",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationcreateTournamentinit0FunctionMutationcreateTournamentinit0FunctionAppSyncFunctionD4E9555B",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationcreateTournamentauth0FunctionMutationcreateTournamentauth0FunctionAppSyncFunction0D4ED0B1",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationcreateTournamentpostAuth0FunctionMutationcreateTournamentpostAuth0FunctionAppSyncFunctionB26345D2",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationCreateTournamentDataResolverFnMutationCreateTournamentDataResolverFnAppSyncFunction30AF9817",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"createTournament\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "TournamentTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthauthenticatedUserRoleF51E1C27Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthunauthenticatedUserRole596BD464Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthIdentityPool44C560DBRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/mutationCreateTournamentResolver"
+   }
+  },
+  "MutationupdateTournamentinit0FunctionMutationupdateTournamentinit0FunctionAppSyncFunction9535EBC5": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateTournamentinit0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/06db846fd14e6fc371f22b12b5545ba8e2dbfeda85d8c8d586c71c282166657b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/MutationupdateTournamentinit0Function/MutationupdateTournamentinit0Function.AppSyncFunction"
+   }
+  },
+  "MutationupdateTournamentauth0FunctionMutationupdateTournamentauth0FunctionAppSyncFunction1B1B8E19": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "TournamentDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateTournamentauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/89f92efd98b1034df0e2497fe31a97de6975de554b8a22e0677d05d6efcafa59.vtl"
+    }
+   },
+   "DependsOn": [
+    "TournamentDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/MutationupdateTournamentauth0Function/MutationupdateTournamentauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationupdateTournamentpostAuth0FunctionMutationupdateTournamentpostAuth0FunctionAppSyncFunctionA46B49FF": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateTournamentpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/MutationupdateTournamentpostAuth0Function/MutationupdateTournamentpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationUpdateTournamentDataResolverFnMutationUpdateTournamentDataResolverFnAppSyncFunctionF2C428F5": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "TournamentDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationUpdateTournamentDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/474bf0776ec2164a13191d1a0a9e057154931e4918fea5086f49850d02a5371b.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "TournamentDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/MutationUpdateTournamentDataResolverFn/MutationUpdateTournamentDataResolverFn.AppSyncFunction"
+   }
+  },
+  "UpdateTournamentResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "FieldName": "updateTournament",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationupdateTournamentinit0FunctionMutationupdateTournamentinit0FunctionAppSyncFunction9535EBC5",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationupdateTournamentauth0FunctionMutationupdateTournamentauth0FunctionAppSyncFunction1B1B8E19",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationupdateTournamentpostAuth0FunctionMutationupdateTournamentpostAuth0FunctionAppSyncFunctionA46B49FF",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationUpdateTournamentDataResolverFnMutationUpdateTournamentDataResolverFnAppSyncFunctionF2C428F5",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"updateTournament\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "TournamentTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthauthenticatedUserRoleF51E1C27Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthunauthenticatedUserRole596BD464Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthIdentityPool44C560DBRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/mutationUpdateTournamentResolver"
+   }
+  },
+  "MutationdeleteTournamentauth0FunctionMutationdeleteTournamentauth0FunctionAppSyncFunction84367E64": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "TournamentDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationdeleteTournamentauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e3416b4d47414f29c21e59a70e83bddb959ef0625854ed7fb0ca376573e99069.vtl"
+    }
+   },
+   "DependsOn": [
+    "TournamentDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/MutationdeleteTournamentauth0Function/MutationdeleteTournamentauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationdeleteTournamentpostAuth0FunctionMutationdeleteTournamentpostAuth0FunctionAppSyncFunctionEDAA3489": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationdeleteTournamentpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/MutationdeleteTournamentpostAuth0Function/MutationdeleteTournamentpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationDeleteTournamentDataResolverFnMutationDeleteTournamentDataResolverFnAppSyncFunction165BAFA6": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "TournamentDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationDeleteTournamentDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4f7907d1209a2c9953a0c053df402c634e359546d70c7cc5c2e8e21ea734880f.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "TournamentDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/MutationDeleteTournamentDataResolverFn/MutationDeleteTournamentDataResolverFn.AppSyncFunction"
+   }
+  },
+  "DeleteTournamentResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "FieldName": "deleteTournament",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationdeleteTournamentauth0FunctionMutationdeleteTournamentauth0FunctionAppSyncFunction84367E64",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationdeleteTournamentpostAuth0FunctionMutationdeleteTournamentpostAuth0FunctionAppSyncFunctionEDAA3489",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationDeleteTournamentDataResolverFnMutationDeleteTournamentDataResolverFnAppSyncFunction165BAFA6",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"deleteTournament\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "TournamentTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthauthenticatedUserRoleF51E1C27Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthunauthenticatedUserRole596BD464Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthIdentityPool44C560DBRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/mutationDeleteTournamentResolver"
+   }
+  },
+  "SubscriptiononCreateTournamentauth0FunctionSubscriptiononCreateTournamentauth0FunctionAppSyncFunction58559EC3": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononCreateTournamentauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/SubscriptiononCreateTournamentauth0Function/SubscriptiononCreateTournamentauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononCreateTournamentpostAuth0FunctionSubscriptiononCreateTournamentpostAuth0FunctionAppSyncFunctionDE8A710F": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononCreateTournamentpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/SubscriptiononCreateTournamentpostAuth0Function/SubscriptiononCreateTournamentpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnCreateTournamentDataResolverFnSubscriptionOnCreateTournamentDataResolverFnAppSyncFunction42B55829": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnCreateTournamentDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/SubscriptionOnCreateTournamentDataResolverFn/SubscriptionOnCreateTournamentDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononCreateTournamentResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "FieldName": "onCreateTournament",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononCreateTournamentauth0FunctionSubscriptiononCreateTournamentauth0FunctionAppSyncFunction58559EC3",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononCreateTournamentpostAuth0FunctionSubscriptiononCreateTournamentpostAuth0FunctionAppSyncFunctionDE8A710F",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnCreateTournamentDataResolverFnSubscriptionOnCreateTournamentDataResolverFnAppSyncFunction42B55829",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onCreateTournament\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthauthenticatedUserRoleF51E1C27Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthunauthenticatedUserRole596BD464Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthIdentityPool44C560DBRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/subscriptionOnCreateTournamentResolver"
+   }
+  },
+  "SubscriptiononUpdateTournamentauth0FunctionSubscriptiononUpdateTournamentauth0FunctionAppSyncFunction22DB4121": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononUpdateTournamentauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/SubscriptiononUpdateTournamentauth0Function/SubscriptiononUpdateTournamentauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononUpdateTournamentpostAuth0FunctionSubscriptiononUpdateTournamentpostAuth0FunctionAppSyncFunctionF0495338": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononUpdateTournamentpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/SubscriptiononUpdateTournamentpostAuth0Function/SubscriptiononUpdateTournamentpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnUpdateTournamentDataResolverFnSubscriptionOnUpdateTournamentDataResolverFnAppSyncFunctionCB3A6CC0": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnUpdateTournamentDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/SubscriptionOnUpdateTournamentDataResolverFn/SubscriptionOnUpdateTournamentDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononUpdateTournamentResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "FieldName": "onUpdateTournament",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononUpdateTournamentauth0FunctionSubscriptiononUpdateTournamentauth0FunctionAppSyncFunction22DB4121",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononUpdateTournamentpostAuth0FunctionSubscriptiononUpdateTournamentpostAuth0FunctionAppSyncFunctionF0495338",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnUpdateTournamentDataResolverFnSubscriptionOnUpdateTournamentDataResolverFnAppSyncFunctionCB3A6CC0",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onUpdateTournament\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthauthenticatedUserRoleF51E1C27Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthunauthenticatedUserRole596BD464Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthIdentityPool44C560DBRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/subscriptionOnUpdateTournamentResolver"
+   }
+  },
+  "SubscriptiononDeleteTournamentauth0FunctionSubscriptiononDeleteTournamentauth0FunctionAppSyncFunctionA2E6C955": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononDeleteTournamentauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/SubscriptiononDeleteTournamentauth0Function/SubscriptiononDeleteTournamentauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononDeleteTournamentpostAuth0FunctionSubscriptiononDeleteTournamentpostAuth0FunctionAppSyncFunctionA9DF7277": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononDeleteTournamentpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/SubscriptiononDeleteTournamentpostAuth0Function/SubscriptiononDeleteTournamentpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnDeleteTournamentDataResolverFnSubscriptionOnDeleteTournamentDataResolverFnAppSyncFunction9138E75F": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPINONEDS61B18B90Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnDeleteTournamentDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/SubscriptionOnDeleteTournamentDataResolverFn/SubscriptionOnDeleteTournamentDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononDeleteTournamentResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+    },
+    "FieldName": "onDeleteTournament",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononDeleteTournamentauth0FunctionSubscriptiononDeleteTournamentauth0FunctionAppSyncFunctionA2E6C955",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononDeleteTournamentpostAuth0FunctionSubscriptiononDeleteTournamentpostAuth0FunctionAppSyncFunctionA9DF7277",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnDeleteTournamentDataResolverFnSubscriptionOnDeleteTournamentDataResolverFnAppSyncFunction9138E75F",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onDeleteTournament\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthauthenticatedUserRoleF51E1C27Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthunauthenticatedUserRole596BD464Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bauthNestedStackauthNestedStackResourceD3F219B8Outputsamplifyawsamplifygen2abrahamsandboxa32a9c229bauthamplifyAuthIdentityPool44C560DBRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/subscriptionOnDeleteTournamentResolver"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQzW6DQAyEn6X3jZu/F2hAPbYV9B6ZXYM2gBetvYkixLtXS6pUPY1HM7I/eQ+74xG2L3iTjXX9ZvANzB8kSq5WtL0pWv7CiCMpxWyKwM6rD2wqkpCiJVMk0TD+2ZafM97kPLs74xhcA9/YDHRCIeNxhLkKw6MdBloMTpPc2cJcrvWyKVGxfq78794T2wxRBG59lyKuRL+XhyvFxcjhjCKkAm9ZjBzglGxPmgGW3P1MOiU1a1wrdp67xXBwBBd5ve63sMufuYj3m5hY/UhQPfQHDJLHpjYBAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abraham-sandbox-a32a9c229b/data/amplifyData/Tournament/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "GetAttTournamentTableStreamArn": {
+   "Description": "Your DynamoDB table StreamArn.",
+   "Value": {
+    "Fn::GetAtt": [
+     "TournamentTable",
+     "TableStreamArn"
+    ]
+   },
+   "Export": {
+    "Name": {
+     "Fn::Join": [
+      ":",
+      [
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "GetAtt:TournamentTable:StreamArn"
+      ]
+     ]
+    }
+   }
+  },
+  "GetAttTournamentTableName": {
+   "Description": "Your DynamoDB table name.",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "Tournament-",
+      {
+       "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+      },
+      "-NONE"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": {
+     "Fn::Join": [
+      ":",
+      [
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataGraphQLAPI69514D56ApiId"
+       },
+       "GetAtt:TournamentTable:Name"
+      ]
+     ]
+    }
+   }
+  },
+  "amplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataTournamentTournamentDataSource90E36566Name": {
+   "Value": {
+    "Fn::GetAtt": [
+     "TournamentDataSource",
+     "Name"
+    ]
+   }
+  },
+  "amplifyawsamplifygen2abrahamsandboxa32a9c229bdataamplifyDataTournamentTournamentTable77264176TableArn": {
+   "Value": {
+    "Fn::GetAtt": [
+     "TournamentTable",
+     "TableArn"
+    ]
+   }
+  }
+ }
+}

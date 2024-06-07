@@ -1,0 +1,1951 @@
+{
+ "Parameters": {
+  "DynamoDBModelTableReadIOPS": {
+   "Type": "Number",
+   "Default": 5,
+   "Description": "The number of read IOPS the table should support."
+  },
+  "DynamoDBModelTableWriteIOPS": {
+   "Type": "Number",
+   "Default": 5,
+   "Description": "The number of write IOPS the table should support."
+  },
+  "DynamoDBBillingMode": {
+   "Type": "String",
+   "Default": "PAY_PER_REQUEST",
+   "AllowedValues": [
+    "PAY_PER_REQUEST",
+    "PROVISIONED"
+   ],
+   "Description": "Configure @model types to create DynamoDB tables with PAY_PER_REQUEST or PROVISIONED billing modes."
+  },
+  "DynamoDBEnablePointInTimeRecovery": {
+   "Type": "String",
+   "Default": "false",
+   "AllowedValues": [
+    "true",
+    "false"
+   ],
+   "Description": "Whether to enable Point in Time Recovery on the table."
+  },
+  "DynamoDBEnableServerSideEncryption": {
+   "Type": "String",
+   "Default": "true",
+   "AllowedValues": [
+    "true",
+    "false"
+   ],
+   "Description": "Enable server side encryption powered by KMS."
+  },
+  "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource00EB87D2Outputsamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataAmplifyTableManagerT93B2897C": {
+   "Type": "String"
+  },
+  "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId": {
+   "Type": "String"
+  },
+  "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name": {
+   "Type": "String"
+  },
+  "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthauthenticatedUserRoleD487AF7CRef": {
+   "Type": "String"
+  },
+  "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthunauthenticatedUserRole0357E2D9Ref": {
+   "Type": "String"
+  },
+  "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthIdentityPoolE9B42D72Ref": {
+   "Type": "String"
+  }
+ },
+ "Conditions": {
+  "HasEnvironmentParameter": {
+   "Fn::Not": [
+    {
+     "Fn::Equals": [
+      "NONE",
+      "NONE"
+     ]
+    }
+   ]
+  },
+  "ShouldUseServerSideEncryption": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBEnableServerSideEncryption"
+    },
+    "true"
+   ]
+  },
+  "ShouldUsePayPerRequestBilling": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBBillingMode"
+    },
+    "PAY_PER_REQUEST"
+   ]
+  },
+  "ShouldUsePointInTimeRecovery": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBEnablePointInTimeRecovery"
+    },
+    "true"
+   ]
+  },
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-2"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "Resources": {
+  "QrcodeTable": {
+   "Type": "Custom::AmplifyDynamoDBTable",
+   "Properties": {
+    "ServiceToken": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource00EB87D2Outputsamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataAmplifyTableManagerT93B2897C"
+    },
+    "tableName": {
+     "Fn::Join": [
+      "",
+      [
+       "Qrcode-",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "-NONE"
+      ]
+     ]
+    },
+    "attributeDefinitions": [
+     {
+      "attributeName": "id",
+      "attributeType": "S"
+     },
+     {
+      "attributeName": "ticketId",
+      "attributeType": "S"
+     }
+    ],
+    "keySchema": [
+     {
+      "attributeName": "id",
+      "keyType": "HASH"
+     }
+    ],
+    "globalSecondaryIndexes": [
+     {
+      "indexName": "gsi-Ticket.qrcode",
+      "keySchema": [
+       {
+        "attributeName": "ticketId",
+        "keyType": "HASH"
+       }
+      ],
+      "projection": {
+       "projectionType": "ALL"
+      },
+      "provisionedThroughput": {
+       "Fn::If": [
+        "ShouldUsePayPerRequestBilling",
+        {
+         "Ref": "AWS::NoValue"
+        },
+        {
+         "ReadCapacityUnits": {
+          "Ref": "DynamoDBModelTableReadIOPS"
+         },
+         "WriteCapacityUnits": {
+          "Ref": "DynamoDBModelTableWriteIOPS"
+         }
+        }
+       ]
+      }
+     }
+    ],
+    "provisionedThroughput": {
+     "Fn::If": [
+      "ShouldUsePayPerRequestBilling",
+      {
+       "Ref": "AWS::NoValue"
+      },
+      {
+       "ReadCapacityUnits": {
+        "Ref": "DynamoDBModelTableReadIOPS"
+       },
+       "WriteCapacityUnits": {
+        "Ref": "DynamoDBModelTableWriteIOPS"
+       }
+      }
+     ]
+    },
+    "sseSpecification": {
+     "sseEnabled": {
+      "Fn::If": [
+       "ShouldUseServerSideEncryption",
+       true,
+       false
+      ]
+     }
+    },
+    "streamSpecification": {
+     "streamViewType": "NEW_AND_OLD_IMAGES"
+    },
+    "allowDestructiveGraphqlSchemaUpdates": true,
+    "replaceTableUponGsiUpdate": true,
+    "pointInTimeRecoverySpecification": {
+     "Fn::If": [
+      "ShouldUsePointInTimeRecovery",
+      {
+       "PointInTimeRecoveryEnabled": true
+      },
+      {
+       "Ref": "AWS::NoValue"
+      }
+     ]
+    },
+    "billingMode": {
+     "Fn::If": [
+      "ShouldUsePayPerRequestBilling",
+      "PAY_PER_REQUEST",
+      {
+       "Ref": "AWS::NoValue"
+      }
+     ]
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/QrcodeTable/Default/Default"
+   }
+  },
+  "QrcodeIAMRole8240BF5A": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "appsync.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Policies": [
+     {
+      "PolicyDocument": {
+       "Statement": [
+        {
+         "Action": [
+          "dynamodb:BatchGetItem",
+          "dynamodb:BatchWriteItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem",
+          "dynamodb:GetItem",
+          "dynamodb:Scan",
+          "dynamodb:Query",
+          "dynamodb:UpdateItem",
+          "dynamodb:ConditionCheckItem",
+          "dynamodb:DescribeTable",
+          "dynamodb:GetRecords",
+          "dynamodb:GetShardIterator"
+         ],
+         "Effect": "Allow",
+         "Resource": [
+          {
+           "Fn::Sub": [
+            "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}",
+            {
+             "tablename": {
+              "Fn::Join": [
+               "",
+               [
+                "Qrcode-",
+                {
+                 "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+                },
+                "-NONE"
+               ]
+              ]
+             }
+            }
+           ]
+          },
+          {
+           "Fn::Sub": [
+            "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}/*",
+            {
+             "tablename": {
+              "Fn::Join": [
+               "",
+               [
+                "Qrcode-",
+                {
+                 "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+                },
+                "-NONE"
+               ]
+              ]
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ],
+       "Version": "2012-10-17"
+      },
+      "PolicyName": "DynamoDBAccess"
+     }
+    ],
+    "RoleName": {
+     "Fn::Join": [
+      "",
+      [
+       "QrcodeIAMRole74e59e-",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "-NONE"
+      ]
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyData"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/QrcodeIAMRole/Resource"
+   }
+  },
+  "QrcodeDataSource": {
+   "Type": "AWS::AppSync::DataSource",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DynamoDBConfig": {
+     "AwsRegion": {
+      "Ref": "AWS::Region"
+     },
+     "TableName": {
+      "Fn::Select": [
+       1,
+       {
+        "Fn::Split": [
+         "/",
+         {
+          "Fn::Select": [
+           5,
+           {
+            "Fn::Split": [
+             ":",
+             {
+              "Fn::GetAtt": [
+               "QrcodeTable",
+               "TableArn"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "Name": "QrcodeTable",
+    "ServiceRoleArn": {
+     "Fn::GetAtt": [
+      "QrcodeIAMRole8240BF5A",
+      "Arn"
+     ]
+    },
+    "Type": "AMAZON_DYNAMODB"
+   },
+   "DependsOn": [
+    "QrcodeIAMRole8240BF5A"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/QrcodeDataSource/Resource"
+   }
+  },
+  "QuerygetQrcodeauth0FunctionQuerygetQrcodeauth0FunctionAppSyncFunction12CC5A08": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerygetQrcodeauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0224a3e5097427da3f4460b5d6d2b86ad4195c9cb8da7bc13e7187eead1c3ae3.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/QuerygetQrcodeauth0Function/QuerygetQrcodeauth0Function.AppSyncFunction"
+   }
+  },
+  "QuerygetQrcodepostAuth0FunctionQuerygetQrcodepostAuth0FunctionAppSyncFunction3DCE8FC6": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerygetQrcodepostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/QuerygetQrcodepostAuth0Function/QuerygetQrcodepostAuth0Function.AppSyncFunction"
+   }
+  },
+  "QueryGetQrcodeDataResolverFnQueryGetQrcodeDataResolverFnAppSyncFunctionBB0C18F9": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "QrcodeDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QueryGetQrcodeDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/08f4d557693d96c1a4efba0f9dc91330e4b19772fd5477c156468843e3d9cb5e.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4c6a2d29f01c6091bd1d9afe16e5849d456c96f17c3b215938c8067399532719.vtl"
+    }
+   },
+   "DependsOn": [
+    "QrcodeDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/QueryGetQrcodeDataResolverFn/QueryGetQrcodeDataResolverFn.AppSyncFunction"
+   }
+  },
+  "GetQrcodeResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "FieldName": "getQrcode",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "QuerygetQrcodeauth0FunctionQuerygetQrcodeauth0FunctionAppSyncFunction12CC5A08",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QuerygetQrcodepostAuth0FunctionQuerygetQrcodepostAuth0FunctionAppSyncFunction3DCE8FC6",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QueryGetQrcodeDataResolverFnQueryGetQrcodeDataResolverFnAppSyncFunctionBB0C18F9",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"getQrcode\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "QrcodeTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthauthenticatedUserRoleD487AF7CRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthunauthenticatedUserRole0357E2D9Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthIdentityPoolE9B42D72Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Query"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/queryGetQrcodeResolver"
+   }
+  },
+  "QuerylistQrcodesauth0FunctionQuerylistQrcodesauth0FunctionAppSyncFunction7D252AB8": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerylistQrcodesauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0224a3e5097427da3f4460b5d6d2b86ad4195c9cb8da7bc13e7187eead1c3ae3.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/QuerylistQrcodesauth0Function/QuerylistQrcodesauth0Function.AppSyncFunction"
+   }
+  },
+  "QuerylistQrcodespostAuth0FunctionQuerylistQrcodespostAuth0FunctionAppSyncFunction46CEAB35": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerylistQrcodespostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/QuerylistQrcodespostAuth0Function/QuerylistQrcodespostAuth0Function.AppSyncFunction"
+   }
+  },
+  "QueryListQrcodesDataResolverFnQueryListQrcodesDataResolverFnAppSyncFunction8C929A01": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "QrcodeDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QueryListQrcodesDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/3665466abf40cc747bff935f1cf2f49edd920e2cd12d45d502d3857488b3ff3e.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/cc01911d0269d4080ea57505dc445dfc315ef7ad85d3d9d4ea1357858bff451d.vtl"
+    }
+   },
+   "DependsOn": [
+    "QrcodeDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/QueryListQrcodesDataResolverFn/QueryListQrcodesDataResolverFn.AppSyncFunction"
+   }
+  },
+  "ListQrcodeResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "FieldName": "listQrcodes",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "QuerylistQrcodesauth0FunctionQuerylistQrcodesauth0FunctionAppSyncFunction7D252AB8",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QuerylistQrcodespostAuth0FunctionQuerylistQrcodespostAuth0FunctionAppSyncFunction46CEAB35",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QueryListQrcodesDataResolverFnQueryListQrcodesDataResolverFnAppSyncFunction8C929A01",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"listQrcodes\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "QrcodeTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthauthenticatedUserRoleD487AF7CRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthunauthenticatedUserRole0357E2D9Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthIdentityPoolE9B42D72Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Query"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/queryListQrcodesResolver"
+   }
+  },
+  "MutationcreateQrcodeinit0FunctionMutationcreateQrcodeinit0FunctionAppSyncFunctionD370FF72": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateQrcodeinit0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a183ddccbd956316c38ef97177b8f088ef0826f62023323f5ae6053d348ccffc.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/MutationcreateQrcodeinit0Function/MutationcreateQrcodeinit0Function.AppSyncFunction"
+   }
+  },
+  "MutationcreateQrcodeauth0FunctionMutationcreateQrcodeauth0FunctionAppSyncFunction1B656389": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateQrcodeauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d637c1fb7301003b8a5ada269338cf2e8df6cc0dc412ef13acc6158d680b6d3e.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/MutationcreateQrcodeauth0Function/MutationcreateQrcodeauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationcreateQrcodepostAuth0FunctionMutationcreateQrcodepostAuth0FunctionAppSyncFunctionCB20781D": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateQrcodepostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/MutationcreateQrcodepostAuth0Function/MutationcreateQrcodepostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationCreateQrcodeDataResolverFnMutationCreateQrcodeDataResolverFnAppSyncFunction600587F6": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "QrcodeDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationCreateQrcodeDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1b2e86d90c061790488198d1b4c0065abdcdfcdcdd3d85cedaacc7f32f51c982.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "QrcodeDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/MutationCreateQrcodeDataResolverFn/MutationCreateQrcodeDataResolverFn.AppSyncFunction"
+   }
+  },
+  "CreateQrcodeResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "FieldName": "createQrcode",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationcreateQrcodeinit0FunctionMutationcreateQrcodeinit0FunctionAppSyncFunctionD370FF72",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationcreateQrcodeauth0FunctionMutationcreateQrcodeauth0FunctionAppSyncFunction1B656389",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationcreateQrcodepostAuth0FunctionMutationcreateQrcodepostAuth0FunctionAppSyncFunctionCB20781D",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationCreateQrcodeDataResolverFnMutationCreateQrcodeDataResolverFnAppSyncFunction600587F6",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"createQrcode\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "QrcodeTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthauthenticatedUserRoleD487AF7CRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthunauthenticatedUserRole0357E2D9Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthIdentityPoolE9B42D72Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/mutationCreateQrcodeResolver"
+   }
+  },
+  "MutationupdateQrcodeinit0FunctionMutationupdateQrcodeinit0FunctionAppSyncFunction2FF081DC": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateQrcodeinit0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/06db846fd14e6fc371f22b12b5545ba8e2dbfeda85d8c8d586c71c282166657b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/MutationupdateQrcodeinit0Function/MutationupdateQrcodeinit0Function.AppSyncFunction"
+   }
+  },
+  "MutationupdateQrcodeauth0FunctionMutationupdateQrcodeauth0FunctionAppSyncFunction4A5C4554": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "QrcodeDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateQrcodeauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/89f92efd98b1034df0e2497fe31a97de6975de554b8a22e0677d05d6efcafa59.vtl"
+    }
+   },
+   "DependsOn": [
+    "QrcodeDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/MutationupdateQrcodeauth0Function/MutationupdateQrcodeauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationupdateQrcodepostAuth0FunctionMutationupdateQrcodepostAuth0FunctionAppSyncFunction64C80C56": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateQrcodepostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/MutationupdateQrcodepostAuth0Function/MutationupdateQrcodepostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationUpdateQrcodeDataResolverFnMutationUpdateQrcodeDataResolverFnAppSyncFunctionDE089B88": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "QrcodeDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationUpdateQrcodeDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/474bf0776ec2164a13191d1a0a9e057154931e4918fea5086f49850d02a5371b.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "QrcodeDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/MutationUpdateQrcodeDataResolverFn/MutationUpdateQrcodeDataResolverFn.AppSyncFunction"
+   }
+  },
+  "UpdateQrcodeResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "FieldName": "updateQrcode",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationupdateQrcodeinit0FunctionMutationupdateQrcodeinit0FunctionAppSyncFunction2FF081DC",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationupdateQrcodeauth0FunctionMutationupdateQrcodeauth0FunctionAppSyncFunction4A5C4554",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationupdateQrcodepostAuth0FunctionMutationupdateQrcodepostAuth0FunctionAppSyncFunction64C80C56",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationUpdateQrcodeDataResolverFnMutationUpdateQrcodeDataResolverFnAppSyncFunctionDE089B88",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"updateQrcode\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "QrcodeTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthauthenticatedUserRoleD487AF7CRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthunauthenticatedUserRole0357E2D9Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthIdentityPoolE9B42D72Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/mutationUpdateQrcodeResolver"
+   }
+  },
+  "MutationdeleteQrcodeauth0FunctionMutationdeleteQrcodeauth0FunctionAppSyncFunction98EB5EF4": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "QrcodeDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationdeleteQrcodeauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e3416b4d47414f29c21e59a70e83bddb959ef0625854ed7fb0ca376573e99069.vtl"
+    }
+   },
+   "DependsOn": [
+    "QrcodeDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/MutationdeleteQrcodeauth0Function/MutationdeleteQrcodeauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationdeleteQrcodepostAuth0FunctionMutationdeleteQrcodepostAuth0FunctionAppSyncFunctionCC5DE5E4": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationdeleteQrcodepostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/MutationdeleteQrcodepostAuth0Function/MutationdeleteQrcodepostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationDeleteQrcodeDataResolverFnMutationDeleteQrcodeDataResolverFnAppSyncFunction614C99C4": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "QrcodeDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationDeleteQrcodeDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4f7907d1209a2c9953a0c053df402c634e359546d70c7cc5c2e8e21ea734880f.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "QrcodeDataSource"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/MutationDeleteQrcodeDataResolverFn/MutationDeleteQrcodeDataResolverFn.AppSyncFunction"
+   }
+  },
+  "DeleteQrcodeResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "FieldName": "deleteQrcode",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationdeleteQrcodeauth0FunctionMutationdeleteQrcodeauth0FunctionAppSyncFunction98EB5EF4",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationdeleteQrcodepostAuth0FunctionMutationdeleteQrcodepostAuth0FunctionAppSyncFunctionCC5DE5E4",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationDeleteQrcodeDataResolverFnMutationDeleteQrcodeDataResolverFnAppSyncFunction614C99C4",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"deleteQrcode\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "QrcodeTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthauthenticatedUserRoleD487AF7CRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthunauthenticatedUserRole0357E2D9Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthIdentityPoolE9B42D72Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/mutationDeleteQrcodeResolver"
+   }
+  },
+  "SubscriptiononCreateQrcodeauth0FunctionSubscriptiononCreateQrcodeauth0FunctionAppSyncFunction4838D3CF": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononCreateQrcodeauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/SubscriptiononCreateQrcodeauth0Function/SubscriptiononCreateQrcodeauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononCreateQrcodepostAuth0FunctionSubscriptiononCreateQrcodepostAuth0FunctionAppSyncFunction4B762A1B": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononCreateQrcodepostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/SubscriptiononCreateQrcodepostAuth0Function/SubscriptiononCreateQrcodepostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnCreateQrcodeDataResolverFnSubscriptionOnCreateQrcodeDataResolverFnAppSyncFunction451BAE36": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnCreateQrcodeDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/SubscriptionOnCreateQrcodeDataResolverFn/SubscriptionOnCreateQrcodeDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononCreateQrcodeResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "FieldName": "onCreateQrcode",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononCreateQrcodeauth0FunctionSubscriptiononCreateQrcodeauth0FunctionAppSyncFunction4838D3CF",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononCreateQrcodepostAuth0FunctionSubscriptiononCreateQrcodepostAuth0FunctionAppSyncFunction4B762A1B",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnCreateQrcodeDataResolverFnSubscriptionOnCreateQrcodeDataResolverFnAppSyncFunction451BAE36",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onCreateQrcode\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthauthenticatedUserRoleD487AF7CRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthunauthenticatedUserRole0357E2D9Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthIdentityPoolE9B42D72Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/subscriptionOnCreateQrcodeResolver"
+   }
+  },
+  "SubscriptiononUpdateQrcodeauth0FunctionSubscriptiononUpdateQrcodeauth0FunctionAppSyncFunction1A2D085E": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononUpdateQrcodeauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/SubscriptiononUpdateQrcodeauth0Function/SubscriptiononUpdateQrcodeauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononUpdateQrcodepostAuth0FunctionSubscriptiononUpdateQrcodepostAuth0FunctionAppSyncFunction15C73016": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononUpdateQrcodepostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/SubscriptiononUpdateQrcodepostAuth0Function/SubscriptiononUpdateQrcodepostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnUpdateQrcodeDataResolverFnSubscriptionOnUpdateQrcodeDataResolverFnAppSyncFunctionFB045FBC": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnUpdateQrcodeDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/SubscriptionOnUpdateQrcodeDataResolverFn/SubscriptionOnUpdateQrcodeDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononUpdateQrcodeResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "FieldName": "onUpdateQrcode",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononUpdateQrcodeauth0FunctionSubscriptiononUpdateQrcodeauth0FunctionAppSyncFunction1A2D085E",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononUpdateQrcodepostAuth0FunctionSubscriptiononUpdateQrcodepostAuth0FunctionAppSyncFunction15C73016",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnUpdateQrcodeDataResolverFnSubscriptionOnUpdateQrcodeDataResolverFnAppSyncFunctionFB045FBC",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onUpdateQrcode\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthauthenticatedUserRoleD487AF7CRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthunauthenticatedUserRole0357E2D9Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthIdentityPoolE9B42D72Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/subscriptionOnUpdateQrcodeResolver"
+   }
+  },
+  "SubscriptiononDeleteQrcodeauth0FunctionSubscriptiononDeleteQrcodeauth0FunctionAppSyncFunction740A8213": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononDeleteQrcodeauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/SubscriptiononDeleteQrcodeauth0Function/SubscriptiononDeleteQrcodeauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononDeleteQrcodepostAuth0FunctionSubscriptiononDeleteQrcodepostAuth0FunctionAppSyncFunction4C7B53A0": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononDeleteQrcodepostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/SubscriptiononDeleteQrcodepostAuth0Function/SubscriptiononDeleteQrcodepostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnDeleteQrcodeDataResolverFnSubscriptionOnDeleteQrcodeDataResolverFnAppSyncFunctionFBF5D604": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPINONEDSFF9593C6Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnDeleteQrcodeDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/SubscriptionOnDeleteQrcodeDataResolverFn/SubscriptionOnDeleteQrcodeDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononDeleteQrcodeResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+    },
+    "FieldName": "onDeleteQrcode",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononDeleteQrcodeauth0FunctionSubscriptiononDeleteQrcodeauth0FunctionAppSyncFunction740A8213",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononDeleteQrcodepostAuth0FunctionSubscriptiononDeleteQrcodepostAuth0FunctionAppSyncFunction4C7B53A0",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnDeleteQrcodeDataResolverFnSubscriptionOnDeleteQrcodeDataResolverFnAppSyncFunctionFBF5D604",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onDeleteQrcode\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthauthenticatedUserRoleD487AF7CRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthunauthenticatedUserRole0357E2D9Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5dauthNestedStackauthNestedStackResourceA618661AOutputsamplifyawsamplifygen2abvegatestsandbox1361285e5dauthamplifyAuthIdentityPoolE9B42D72Ref"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/subscriptionOnDeleteQrcodeResolver"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQzW6DQAyEn6X3jZu/F2hAPbYV9B6ZXYM2gBetvYkixLtXS6pUPY1HM7I/eQ+74xG2L3iTjXX9ZvANzB8kSq5WtL0pWv7CiCMpxWyKwM6rD2wqkpCiJVMk0TD+2ZafM97kPLs74xhcA9/YDHRCIeNxhLkKw6MdBloMTpPc2cJcrvWyKVGxfq78794T2wxRBG59lyKuRL+XhyvFxcjhjCKkAm9ZjBzglGxPmgGW3P1MOiU1a1wrdp67xXBwBBd5ve63sMufuYj3m5hY/UhQPfQHDJLHpjYBAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-awsamplifygen2-abvegatest-sandbox-1361285e5d/data/amplifyData/Qrcode/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "GetAttQrcodeTableStreamArn": {
+   "Description": "Your DynamoDB table StreamArn.",
+   "Value": {
+    "Fn::GetAtt": [
+     "QrcodeTable",
+     "TableStreamArn"
+    ]
+   },
+   "Export": {
+    "Name": {
+     "Fn::Join": [
+      ":",
+      [
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "GetAtt:QrcodeTable:StreamArn"
+      ]
+     ]
+    }
+   }
+  },
+  "GetAttQrcodeTableName": {
+   "Description": "Your DynamoDB table name.",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "Qrcode-",
+      {
+       "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+      },
+      "-NONE"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": {
+     "Fn::Join": [
+      ":",
+      [
+       {
+        "Ref": "referencetoamplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataGraphQLAPI61071696ApiId"
+       },
+       "GetAtt:QrcodeTable:Name"
+      ]
+     ]
+    }
+   }
+  },
+  "amplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataQrcodeQrcodeDataSource712F3FB3Name": {
+   "Value": {
+    "Fn::GetAtt": [
+     "QrcodeDataSource",
+     "Name"
+    ]
+   }
+  },
+  "amplifyawsamplifygen2abvegatestsandbox1361285e5ddataamplifyDataQrcodeQrcodeTable5F1FEC24TableArn": {
+   "Value": {
+    "Fn::GetAtt": [
+     "QrcodeTable",
+     "TableArn"
+    ]
+   }
+  }
+ }
+}

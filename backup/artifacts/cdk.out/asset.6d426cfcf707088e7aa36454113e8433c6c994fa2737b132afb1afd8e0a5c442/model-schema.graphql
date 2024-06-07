@@ -1,0 +1,58 @@
+type Category @model @auth(rules: [{allow: public, provider: apiKey}])
+{
+  categoryId: ID!
+  alias: String!
+  description: String!
+  tournament: [Tournament] @hasMany(references: ["categoryId"])
+}
+
+type Tournament @model @auth(rules: [{allow: public, provider: apiKey}])
+{
+  tournamentId: ID!
+  name: String!
+  categoryId: ID!
+  userId: ID!
+  category: Category @belongsTo(references: ["categoryId"])
+  user: User @belongsTo(references: ["userId"])
+  tickets: [Ticket] @hasMany(references: ["tournamentId"])
+}
+
+type Ticket @model @auth(rules: [{allow: public, provider: apiKey}])
+{
+  ticketId: ID!
+  status: String!
+  createdAt: AWSDateTime!
+  tournamentId: ID!
+  userId: ID!
+  tournament: Tournament @belongsTo(references: ["tournamentId"])
+  qrcode: Qrcode @hasOne(references: ["ticketId"])
+  user: User @belongsTo(references: ["userId"])
+}
+
+type Qrcode @model @auth(rules: [{allow: public, provider: apiKey}])
+{
+  qrCodeId: ID!
+  ticketId: ID!
+  ticket: Ticket @belongsTo(references: ["ticketId"])
+  url: String!
+}
+
+type User @model @auth(rules: [{allow: public, provider: apiKey}])
+{
+  userId: ID!
+  name: String!
+  email: String!
+  tierId: ID
+  tier: Tier @belongsTo(references: ["tierId"])
+  tickets: [Ticket] @hasMany(references: ["userId"])
+  tournaments: [Tournament] @hasMany(references: ["userId"])
+}
+
+type Tier @model @auth(rules: [{allow: public, provider: apiKey}])
+{
+  tierId: ID!
+  user: [User] @hasMany(references: ["tierId"])
+  alias: String!
+  value: Float!
+  description: String!
+}
