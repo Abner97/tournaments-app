@@ -48,7 +48,6 @@ export const handler: PostConfirmationTriggerHandler = async (event) => {
           email: event.request.userAttributes.email,
           profileOwner: `${event.request.userAttributes.sub}::${event.userName}`,
           name: event.request.userAttributes.name,
-          tierId: 'free',
         },
       },
     })
