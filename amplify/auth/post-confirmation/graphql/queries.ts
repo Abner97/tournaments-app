@@ -246,10 +246,18 @@ export const listTickets = /* GraphQL */ `query ListTickets(
 >;
 export const listTiers = /* GraphQL */ `query ListTiers(
   $filter: ModelTierFilterInput
+  $id: ID
   $limit: Int
   $nextToken: String
+  $sortDirection: ModelSortDirection
 ) {
-  listTiers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listTiers(
+    filter: $filter
+    id: $id
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
     items {
       alias
       createdAt
