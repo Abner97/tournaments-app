@@ -235,6 +235,12 @@ export type ModelIntInput = {
   ne?: number | null,
 };
 
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
+
 export type ModelTierConnection = {
   __typename: "ModelTierConnection",
   items:  Array<Tier | null >,
@@ -833,8 +839,10 @@ export type ListTicketsQuery = {
 
 export type ListTiersQueryVariables = {
   filter?: ModelTierFilterInput | null,
+  id?: string | null,
   limit?: number | null,
   nextToken?: string | null,
+  sortDirection?: ModelSortDirection | null,
 };
 
 export type ListTiersQuery = {
