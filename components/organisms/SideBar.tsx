@@ -14,7 +14,7 @@ interface AppRoute {
 
 const appRoutes: Array<AppRoute> = [
   {
-    href: '/my-tournaments',
+    href: '/tournaments/my-tournaments',
     text: 'Mis torneos',
     icon: 'Gamepad',
   },
@@ -35,7 +35,6 @@ const appRoutes: Array<AppRoute> = [
   },
 ];
 const SideBar: React.FC<WithAuthenticatorProps> = ({ signOut, user }) => {
-  
   return (
     <div className='grid h-full max-w-72 grid-flow-row grid-cols-1 grid-rows-12 flex-col items-center bg-slate-800 p-2'>
       <SudoTournamentsLogo className='row-span-2 flex h-full cursor-pointer items-center justify-center' />

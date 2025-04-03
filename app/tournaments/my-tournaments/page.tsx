@@ -28,14 +28,14 @@ const MyTournaments = () => {
       <div className='flex h-20 w-full items-center justify-end pr-5'>
         <Button onClick={() => setShowForm(true)}>Create Tournament</Button>
       </div>
-      <TournamentsContainer tournaments={tournaments} self={true} />
+      <TournamentsContainer tournaments={tournaments} self />
       {showForm &&
         createPortal(
           <div
-            className='absolute z-30 flex h-full w-full items-center justify-center bg-slate-800 bg-opacity-60 backdrop-blur-sm transition-all duration-500 ease-in-out'
+            className='bg-opacity-60 absolute z-30 flex h-full w-full items-center justify-center bg-slate-800 backdrop-blur-sm transition-all duration-500 ease-in-out'
             onClick={() => setShowForm(false)}
           >
-            <TournamentForm className='absolute h-[620px]' />
+            <TournamentForm className='absolute h-[620px] overflow-auto' />
           </div>,
           document.getElementById('my-tournaments-page') || document.body
         )}

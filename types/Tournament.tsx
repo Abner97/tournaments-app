@@ -5,6 +5,10 @@ export interface Tournament {
   gameName: string;
   name: string;
   prize: number;
+  description: string;
+  startDate: string;
+  endDate: string;
+  inscriptionPrice: number;
   userId?: string;
   category?: Category;
   user?: User;

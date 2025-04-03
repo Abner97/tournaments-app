@@ -6,6 +6,7 @@ import SideBar from '@/components/organisms/SideBar';
 import AmplifyClientProvider from '@/components/atoms/AmplifyClientProvider';
 import '@aws-amplify/ui-react/styles.css';
 import LoadingState from '@/components/atoms/LoadingState';
+import QueryProvider from '@/providers/QueryProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,11 +29,13 @@ export default function RootLayout({
         )}
       >
         <AmplifyClientProvider>
-          <SideBar />
-          <div className='relative h-full w-full flex-col'>
-            <LoadingState />
-            {children}
-          </div>
+          <QueryProvider>
+            <SideBar />
+            <div className='relative h-full w-full flex-col overflow-auto'>
+              <LoadingState />
+              {children}
+            </div>
+          </QueryProvider>
         </AmplifyClientProvider>
       </body>
     </html>

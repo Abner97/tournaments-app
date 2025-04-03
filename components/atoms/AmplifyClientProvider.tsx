@@ -4,7 +4,6 @@ import { client, initializeClient } from '@/services/client';
 import { Amplify } from 'aws-amplify';
 import outputs from '@/amplify_outputs.json';
 import { Authenticator } from '@aws-amplify/ui-react';
-import LoadingState from './LoadingState';
 
 Amplify.configure(outputs);
 initializeClient();

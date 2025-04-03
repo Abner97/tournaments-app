@@ -32,6 +32,10 @@ const tournamentFormSchema = z.object({
   name: z.string().min(2).max(50),
   category: z.string().min(2).max(50),
   gameName: z.string().min(2).max(50),
+  startDate: z.string().min(2).max(50),
+  endDate: z.string().min(2).max(50),
+  inscriptionPrice: z.string().min(1).max(50),
+  description: z.string().min(2).max(50),
   prize: z.string(),
 });
 
@@ -46,6 +50,10 @@ export const TournamentForm: React.FC<HTMLAttributes<HTMLDivElement>> = ({
       category: '',
       gameName: '',
       prize: '0',
+      description: '',
+      startDate: '',
+      endDate: '',
+      inscriptionPrice: '0',
     },
   });
 
@@ -61,6 +69,10 @@ export const TournamentForm: React.FC<HTMLAttributes<HTMLDivElement>> = ({
       categoryId,
       gameName: values.gameName,
       prize: parseFloat(values.prize),
+      description: values.description,
+      startDate: values.startDate,
+      endDate: values.endDate,
+      inscriptionPrice: parseFloat(values.inscriptionPrice),
     };
     createTournament(tournamentData).then((_) => {
       alert('Torneo creado');
@@ -157,6 +169,62 @@ export const TournamentForm: React.FC<HTMLAttributes<HTMLDivElement>> = ({
                   />
                 </FormControl>
                 <FormDescription>Premio en efectivo</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='startDate'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Fecha de inicio</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder='chen chen en tu bolsillo'
+                    {...field}
+                    type='date'
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='endDate'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Fecha de finalización</FormLabel>
+                <FormControl>
+                  <Input {...field} type='date' />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='inscriptionPrice'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Precio de inscripción</FormLabel>
+                <FormControl>
+                  <Input {...field} type='number' />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='description'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Descripción</FormLabel>
+                <FormControl>
+                  <Input {...field} type='text' />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
