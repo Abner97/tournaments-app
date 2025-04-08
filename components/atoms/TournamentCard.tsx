@@ -16,7 +16,8 @@ interface TournamentCardProps {
   tournamentId: string;
   game: string;
   category: string;
-  deleteButton?: boolean;
+  self?: boolean;
+
   owner: string;
   prize?: number;
 }
@@ -25,7 +26,7 @@ const TournamentCard: React.FC<TournamentCardProps> = ({
   title,
   game,
   category,
-  deleteButton,
+  self,
   tournamentId,
   owner,
   prize,
@@ -44,7 +45,7 @@ const TournamentCard: React.FC<TournamentCardProps> = ({
         </ul>
       </CardContent>
       <CardFooter className='flex justify-between'>
-        {tournamentId && deleteButton && (
+        {tournamentId && self && (
           <Button
             onClick={async () => {
               deleteTournament(tournamentId).then(() => {
@@ -54,6 +55,15 @@ const TournamentCard: React.FC<TournamentCardProps> = ({
             }}
           >
             Delete
+          </Button>
+        )}
+        {tournamentId && !self && (
+          <Button
+            onClick={async () => {
+              window.location.href = `/tournaments/${tournamentId}`;
+            }}
+          >
+            Anotarse
           </Button>
         )}
       </CardFooter>

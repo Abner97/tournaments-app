@@ -15,11 +15,11 @@ const TournamentsContainer: React.FC<TournamentContainerProps> = ({
 }) => {
   return tournaments.length ? (
     <div className='grid h-full w-full grid-cols-[repeat(auto-fill,minmax(350px,1fr))] items-center justify-items-center gap-5 overflow-auto py-5'>
-      {tournaments.map((tournament, index) => (
+      {tournaments.map((tournament) => (
         <TournamentCard
-          key={index}
+          key={tournament.id}
           title={tournament.name}
-          deleteButton={self}
+          self={self}
           game={tournament.gameName}
           category={tournament.category?.alias || 'No reconocida'}
           tournamentId={tournament.id!}

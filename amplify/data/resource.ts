@@ -1,5 +1,6 @@
 import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
 import { postConfirmation } from '../auth/post-confirmation/resource';
+import { generateQrCode } from '../functions/generate-qr-code/resource';
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -25,30 +26,25 @@ const schema = a
         categoryId: a.id().required(),
         userId: a.id().required(),
         prize: a.float().required(),
+        registrationPrice: a.float().required(),
+        startDate: a.string().required(),
+        endDate: a.string().required(),
+        description: a.string().required(),
         category: a.belongsTo('Category', 'categoryId'),
         user: a.belongsTo('User', 'userId'),
         tickets: a.hasMany('Ticket', 'tournamentId'),
+        imageKey: a.string(),
       })
       .authorization((allow) => [allow.publicApiKey()]),
 
     Ticket: a
       .model({
-        status: a.string().required(),
         createdAt: a.datetime().required(),
         price: a.float().required(),
         tournamentId: a.id().required(),
         userId: a.id().required(),
         tournament: a.belongsTo('Tournament', 'tournamentId'),
-        qrcode: a.hasOne('Qrcode', 'ticketId'),
         user: a.belongsTo('User', 'userId'),
-      })
-      .authorization((allow) => [allow.publicApiKey()]),
-
-    Qrcode: a
-      .model({
-        ticketId: a.id().required(),
-        ticket: a.belongsTo('Ticket', 'ticketId'),
-        url: a.string().required(),
       })
       .authorization((allow) => [allow.publicApiKey()]),
 
@@ -79,6 +75,17 @@ const schema = a
         updatedAt: a.datetime(),
       })
       .authorization((allow) => [allow.publicApiKey()]),
+
+    generateQrCode: a
+      .query()
+      .arguments({
+        ticketId: a.string(),
+        userEmail: a.string(),
+        userId: a.string(),
+      })
+      .returns(a.string())
+      .authorization((allow) => [allow.publicApiKey()])
+      .handler(a.handler.function(generateQrCode)),
   })
   .authorization((allow) => [allow.resource(postConfirmation)]);
 
@@ -93,32 +100,3 @@ export const data = defineData({
     },
   },
 });
-
-/*== STEP 2 ===============================================================
-Go to your frontend source code. From your client-side code, generate a
-Data client to make CRUDL requests to your table. (THIS SNIPPET WILL ONLY
-WORK IN THE FRONTEND CODE FILE.)
-
-Using JavaScript or Next.js React Server Components, Middleware, Server 
-Actions or Pages Router? Review how to generate Data clients for those use
-cases: https://docs.amplify.aws/gen2/build-a-backend/data/connect-to-API/
-=========================================================================*/
-
-/*
-"use client"
-import { generateClient } from "aws-amplify/data";
-import type { Schema } from "@/amplify/data/resource";
-
-const client = generateClient<Schema>() // use this Data client for CRUDL requests
-*/
-
-/*== STEP 3 ===============================================================
-Fetch records from the database and use them in your frontend component.
-(THIS SNIPPET WILL ONLY WORK IN THE FRONTEND CODE FILE.)
-=========================================================================*/
-
-/* For example, in a React component, you can use this snippet in your
-  function's RETURN statement */
-// const { data: todos } = await client.models.Todo.list()
-
-// return <ul>{todos.map(todo => <li key={todo.id}>{todo.content}</li>)}</ul>

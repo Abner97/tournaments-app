@@ -27,18 +27,28 @@ import { Category } from '@/amplify/auth/post-confirmation/graphql/API';
 import { createTournament } from '@/services/tournaments-service';
 import { Tournament } from '@/types/Tournament';
 import { cn } from '@/lib/utils';
+import { uploadData } from 'aws-amplify/storage';
 
 const tournamentFormSchema = z.object({
   name: z.string().min(2).max(50),
   category: z.string().min(2).max(50),
   gameName: z.string().min(2).max(50),
+  startDate: z.string().min(2).max(50),
+  endDate: z.string().min(2).max(50),
+  registrationPrice: z.string().min(1).max(50),
+  description: z.string().min(2).max(50),
   prize: z.string(),
 });
 
 const categoriesMap = new Map<string, string>();
-export const TournamentForm: React.FC<HTMLAttributes<HTMLDivElement>> = ({
-  className,
-}) => {
+
+interface TournamentFormProps {
+  onCancel?: () => void;
+}
+
+export const TournamentForm: React.FC<
+  HTMLAttributes<HTMLDivElement> & TournamentFormProps
+> = ({ className, onCancel }) => {
   const form = useForm<z.infer<typeof tournamentFormSchema>>({
     resolver: zodResolver(tournamentFormSchema),
     defaultValues: {
@@ -46,23 +56,49 @@ export const TournamentForm: React.FC<HTMLAttributes<HTMLDivElement>> = ({
       category: '',
       gameName: '',
       prize: '0',
+      description: '',
+      startDate: '',
+      endDate: '',
+      registrationPrice: '0',
     },
   });
 
   const [categories, setCategories] = useState<Array<Category>>([]);
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
-  function onSubmit(values: z.infer<typeof tournamentFormSchema>) {
+  async function onSubmit(values: z.infer<typeof tournamentFormSchema>) {
     const categoryId = categoriesMap.get(values.category);
-    if (!categoryId) {
-      return;
+    if (!categoryId) return;
+
+    let imageKey: string | undefined;
+    if (imageFile) {
+      try {
+        const result = await uploadData({
+          path: `tournaments/${Date.now()}-${imageFile.name}`,
+          data: imageFile,
+        }).result;
+        imageKey = result.path;
+        console.log('Image uploaded successfully:', imageKey);
+      } catch (error) {
+        console.error('Error uploading image:', error);
+        alert('Error subiendo la imagen.');
+        return;
+      }
     }
+
     const tournamentData: Tournament = {
       name: values.name,
       categoryId,
       gameName: values.gameName,
       prize: parseFloat(values.prize),
+      description: values.description,
+      startDate: values.startDate,
+      endDate: values.endDate,
+      registrationPrice: parseFloat(values.registrationPrice),
+      imageKey, // Agrega esta propiedad si tu modelo lo admite
     };
-    createTournament(tournamentData).then((_) => {
+
+    createTournament(tournamentData).then(() => {
       alert('Torneo creado');
       window.location.reload();
     });
@@ -79,7 +115,7 @@ export const TournamentForm: React.FC<HTMLAttributes<HTMLDivElement>> = ({
 
   return (
     <div
-      className={cn('h-full w-96 rounded-md bg-slate-100 p-2', className)}
+      className={cn('h-full w-full rounded-md bg-slate-100 p-2', className)}
       onClick={(event) => event.stopPropagation()}
     >
       <Form {...form}>
@@ -113,7 +149,7 @@ export const TournamentForm: React.FC<HTMLAttributes<HTMLDivElement>> = ({
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder='Select game category' />
+                      <SelectValue placeholder='Selecciona una categoria' />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -161,7 +197,79 @@ export const TournamentForm: React.FC<HTMLAttributes<HTMLDivElement>> = ({
               </FormItem>
             )}
           />
-          <div className='flex w-full justify-end'>
+          <FormField
+            control={form.control}
+            name='startDate'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Fecha de inicio</FormLabel>
+                <FormControl>
+                  <Input {...field} type='date' />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='endDate'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Fecha de finalización</FormLabel>
+                <FormControl>
+                  <Input {...field} type='date' />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='registrationPrice'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Precio de inscripción</FormLabel>
+                <FormControl>
+                  <Input {...field} type='number' />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='description'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Descripción</FormLabel>
+                <FormControl>
+                  <Input {...field} type='text' />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Campo de imagen */}
+          <div>
+            <FormLabel>Imagen del torneo</FormLabel>
+            <Input
+              type='file'
+              accept='image/*'
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) {
+                  setImageFile(file);
+                }
+              }}
+            />
+            <FormDescription>Sube una imagen para tu torneo</FormDescription>
+          </div>
+
+          <div className='flex w-full justify-end gap-5'>
+            <Button type='submit' className='bg-red-700' onClick={onCancel}>
+              Cancelar
+            </Button>
             <Button type='submit'>Crear</Button>
           </div>
         </form>

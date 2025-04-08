@@ -10,6 +10,11 @@ export async function createTournament(tournamentData: Tournament) {
     prize: tournamentData.prize,
     gameName: tournamentData.gameName,
     categoryId: tournamentData.categoryId,
+    startDate: tournamentData.startDate,
+    endDate: tournamentData.endDate,
+    registrationPrice: tournamentData.registrationPrice,
+    description: tournamentData.description,
+    imageKey: tournamentData.imageKey,
   });
 }
 
@@ -31,9 +36,9 @@ export async function getTournamentByUser(): Promise<Tournament[]> {
 }
 
 export async function getTournamentById(tournamentId: string) {
-  const response = await client.models.Tournament.get({ id: tournamentId });
+  const { data } = await client.models.Tournament.get({ id: tournamentId });
 
-  return response.data;
+  return data ? getSingleTournamentData(data) : null;
 }
 
 export async function getAllTournaments(): Promise<Tournament[]> {
@@ -41,17 +46,29 @@ export async function getAllTournaments(): Promise<Tournament[]> {
   return getAllTournamentData(data);
 }
 
+export const getSingleTournamentData: (
+  data: any
+) => Promise<Tournament> = async (data: any) => {
+  return {
+    ...data,
+    category: (await data.category()).data,
+    user: (await data.user()).data,
+    tickets: (await data.tickets()).data,
+  } as unknown as Tournament;
+};
+
 export const getAllTournamentData: (
   data: Array<any>
 ) => Promise<Array<Tournament>> = async (data: Array<any>) => {
   return await Promise.all(
-    data.map(async (tournament) => {
-      return {
-        ...tournament,
-        category: (await tournament.category()).data,
-        user: (await tournament.user()).data,
-        tickets: (await tournament.tickets()).data,
-      } as unknown as Tournament;
-    })
+    data.map(async (tournament) => getSingleTournamentData(tournament))
+  );
+};
+
+export const payInscription: (
+  data: Array<any>
+) => Promise<Array<Tournament>> = async (data: Array<any>) => {
+  return await Promise.all(
+    data.map(async (tournament) => getSingleTournamentData(tournament))
   );
 };
