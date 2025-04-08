@@ -35,7 +35,10 @@ const MyTournaments = () => {
             className='bg-opacity-60 absolute z-30 flex h-full w-full items-center justify-center bg-slate-800 backdrop-blur-sm transition-all duration-500 ease-in-out'
             onClick={() => setShowForm(false)}
           >
-            <TournamentForm className='absolute h-[620px] overflow-auto' />
+            <TournamentForm
+              className='absolute h-full overflow-auto'
+              onCancel={() => setShowForm(false)}
+            />
           </div>,
           document.getElementById('my-tournaments-page') || document.body
         )}

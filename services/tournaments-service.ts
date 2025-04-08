@@ -12,8 +12,9 @@ export async function createTournament(tournamentData: Tournament) {
     categoryId: tournamentData.categoryId,
     startDate: tournamentData.startDate,
     endDate: tournamentData.endDate,
-    inscriptionPrice: tournamentData.inscriptionPrice,
+    registrationPrice: tournamentData.registrationPrice,
     description: tournamentData.description,
+    imageKey: tournamentData.imageKey,
   });
 }
 
@@ -57,6 +58,14 @@ export const getSingleTournamentData: (
 };
 
 export const getAllTournamentData: (
+  data: Array<any>
+) => Promise<Array<Tournament>> = async (data: Array<any>) => {
+  return await Promise.all(
+    data.map(async (tournament) => getSingleTournamentData(tournament))
+  );
+};
+
+export const payInscription: (
   data: Array<any>
 ) => Promise<Array<Tournament>> = async (data: Array<any>) => {
   return await Promise.all(

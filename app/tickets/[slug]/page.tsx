@@ -1,7 +1,7 @@
-import TournamentResume from '@/components/organisms/TournamentResume';
+import TicketResume from '@/components/organisms/TicketResume';
 import { redirect } from 'next/navigation';
 
-export default async function Tournament({
+export default async function Tickets({
   params,
 }: {
   readonly params: { readonly slug?: string };
@@ -14,7 +14,7 @@ export default async function Tournament({
 
   return (
     <div className='flex h-full w-full flex-grow flex-col items-start justify-center py-5'>
-      <TournamentResume tournamentId={resolvedParams.slug} />
+      <TicketResume ticketId={resolvedParams.slug} />
     </div>
   );
 }

@@ -8,9 +8,10 @@ export interface Tournament {
   description: string;
   startDate: string;
   endDate: string;
-  inscriptionPrice: number;
+  registrationPrice: number;
   userId?: string;
   category?: Category;
   user?: User;
   id?: string;
+  imageKey?: string;
 }
