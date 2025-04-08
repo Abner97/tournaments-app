@@ -1,11 +1,12 @@
 import TournamentResume from '@/components/organisms/TournamentResume';
 import { redirect } from 'next/navigation';
 
-export default async function Tournament({
-  params,
-}: {
-  readonly params: { readonly slug?: string };
-}) {
+export default async function Tournament(
+  props: {
+    readonly params: Promise<{ readonly slug?: string }>;
+  }
+) {
+  const params = await props.params;
   if (!params?.slug) {
     redirect('/');
   }

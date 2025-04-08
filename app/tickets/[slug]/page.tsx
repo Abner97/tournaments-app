@@ -1,11 +1,12 @@
 import TicketResume from '@/components/organisms/TicketResume';
 import { redirect } from 'next/navigation';
 
-export default async function Tickets({
-  params,
-}: {
-  readonly params: { readonly slug?: string };
-}) {
+export default async function Tickets(
+  props: {
+    readonly params: Promise<{ readonly slug?: string }>;
+  }
+) {
+  const params = await props.params;
   if (!params?.slug) {
     redirect('/');
   }
